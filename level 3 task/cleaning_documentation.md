@@ -1,22 +1,86 @@
 Data Cleaning Process
-Column Formatting
 
-Reviewed all column data types to ensure consistency and standardization.
+The following data preparation steps were performed:
 
-Converted the Sales column to Currency format for accurate financial analysis.
+1️⃣ Handling Negative Values
 
-Formatted the Order Date and Ship Date columns from General to Date format to support time-based calculations and visualizations.
+Corrected negative values in the Profit column.
 
-Duplicate Records
+Ensured consistency so profit values reflect accurate business performance.
 
-Checked for duplicate rows across the dataset.
+2️⃣ Data Type Validation
 
-Removed any duplicates to maintain accuracy and data integrity.
+Reviewed and validated all column data types.
 
-Missing or Null Values
+Ensured:
 
-Inspected all columns for missing or null values.
+Dates are stored as Date type.
 
-Identified gaps primarily in the Postal Code column.
+Numeric fields (Sales, Profit, Quantity, etc.) are stored as numeric types.
 
-Filled missing postal codes with the correct values based on the corresponding City and State information.
+Categorical columns are formatted properly.
+
+3️⃣ Missing Values Check
+
+Identified and reviewed missing values.
+
+Cleaned or handled them appropriately to maintain data integrity.
+
+4️⃣ Removing Unnecessary Columns
+
+Removed irrelevant or redundant columns from the Fact table.
+
+Reduced data noise and improved model performance.
+
+Data Modeling (Star Schema Design)
+
+To optimize the dataset for analytics and reporting, a Star Schema model was created.
+
+⭐ Fact Table
+
+The main transactional table was structured as the Fact Table, containing:
+
+Sales metrics
+
+Profit
+
+Quantity
+
+Foreign keys linking to dimension tables
+
+Unnecessary descriptive attributes were removed to maintain normalization.
+Dimension Tables
+
+The original table was duplicated and transformed to create separate dimension tables:
+
+🔹 DimCustomer
+
+Contains customer-related attributes.
+
+Used to analyze customer behavior and segmentation.
+
+🔹 DimProduct
+
+Contains product-related information.
+
+Enables product-level performance analysis.
+
+🔹 DimShipMode
+
+Contains shipping mode details.
+
+A conditional column was created to assign a unique Ship Mode ID.
+
+This ID connects the Ship Mode dimension to the Fact table.
+
+🔹 DimDate
+
+Created to support time-based analysis.
+
+Enables:
+
+Yearly trends
+
+Monthly performance
+
+Time intelligence calculations
